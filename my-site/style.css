@@ -1,8 +1,8 @@
 /* reset all */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -12,17 +12,16 @@
   --hero-text-clr: hsl(109, 100%, 90%);
   --features-text-clr: hsl(71, 59%, 67%);
   /* bg colors */
-  --header-bgclr: hsla(128, 62%, 30%, 0.884);
-  --body-bg-clr: hsl(101, 90%, 36%);
+  --header-bgclr: hsla(127, 80%, 10%, 0.603);
+  --body-bg-clr: hsl(102, 45%, 13%);
   --hero-bg-clr: hsl(139, 85%, 24%);
   --features-bg-clr: hsl(128, 94%, 14%);
   /* shadow & accent colors */
-  --accent: hsl(115, 68%, 52%);
-  --cta-shadow: hsl(118, 92%, 76%);
+  --accent: hsl(41, 89%, 66%);
+  --cta-shadow: hsl(118, 46%, 57%);
   --img-box-shadow: hsl(128, 80%, 27%);
   /* fonts  */
-  --ff-basic: "verdana";
-  --ff-stylish: "Roboto";
+  --ff-stylish: 'Raleway', sans-serif;
 }
 
 a {
@@ -61,8 +60,7 @@ li {
   /* font-weight: 600; */
   /* font-family: var(--ff-stylish), sans-serif; */
   /** Font Shorthand */
-  font: 600 0.85rem var(--ff-stylish), sans-serif;
-  letter-spacing: 1.5px;
+  font: 600 12px var(--ff-stylish), sans-serif;
   color: var(--text-clr-light);
   transition: 0.3s ease;
 }
@@ -90,9 +88,9 @@ body {
   order: 2;
   color: var(--text-clr-light);
   letter-spacing: 1.5px;
-  border-bottom: 3px solid var(--features-text-clr);
   text-shadow: 0 0 2rem var(--text-clr-dark);
   cursor: pointer;
+  font-family: var(--ff-stylish);
 }
 
 .logo:hover {
@@ -102,6 +100,7 @@ body {
 nav {
   /* position it */
   position: fixed;
+  z-index: 2;
   left: 0;
   top: 0;
   /* most crucial */
@@ -121,9 +120,12 @@ nav.active {
   /* centering the items for small screens */
   flex-direction: column;
   height: 90%;
+  width: 40%;
+  margin:0 auto;
   justify-content: center;
+  align-items: start;
   gap: 0.8rem;
-  transform: translateX(-170%);
+  transform: translateX(-200px);
   transition: transform 400ms;
 }
 
@@ -139,9 +141,13 @@ nav.active {
 
 /* Think carefully */
 /* style of nav-links anchor tag */
+
+.btns > * {
+  margin: 0 10px;
+}
+
 .nav-links li:not(.btns) a {
-  font-family: var(--ff-basic), sans-serif;
-  font-size: 1.03rem;
+  font: 600 16px var(--ff-stylish);
   letter-spacing: 1px;
   color: var(--text-clr-light);
 }
@@ -155,8 +161,9 @@ nav.active {
   bottom: 0;
   width: 0%;
   height: 100%;
-  background-color: var(--text-clr-dark);
-  opacity: 0.4;
+  background-color: #f7ece377;
+  border-radius: 0.3rem;
+  opacity: 0.6;
   transition: 0.3s ease;
 }
 
@@ -171,8 +178,23 @@ nav.active {
 .hero-section {
   height: 80vh;
   text-align: center;
-  background: var(--hero-bg-clr) url(/Coding_images/Leaves.jpg) center/cover no-repeat;
-  background-blend-mode: soft-light;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: .8;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-text {
@@ -184,14 +206,21 @@ nav.active {
 
 /* follow me part */
 .follow-me {
-  margin-block: 4.5rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 .follow-me a {
   color: var(--text-clr-light);
   font-family: var(--ff-stylish), sans-serif;
-  font-size: 1rem;
-  margin-right: 1rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  margin: 0;
+  padding-right: .55rem;
+}
+
+.follow-me a:hover {
+  color: var(--text-clr-dark);
 }
 
 /* features section */
@@ -271,9 +300,9 @@ nav.active {
 }
 
 .footer-links li a {
-  font-size: 1.03rem;
+  font-size: 1rem;
   color: var(--text-clr-light);
-  font-family: var(--ff-basic), sans-serif;
+  font-family: var(--ff-stylish), sans-serif;
   letter-spacing: 1px;
   transition: 300ms ease-in-out;
 }
@@ -327,26 +356,19 @@ nav.active {
   /* only for bigger screens pos-relative*/
   .hero-section {
     height: 85vh;
-    position: relative;
-    z-index: 1;
   }
 
-  .hero-section .follow-me {
-    margin: 1rem 0;
+  .follow-me {
     position: absolute;
-    right: 2.25rem;
-    bottom: 1rem;
-  }
-
-  .hero-section .follow-me a {
-    margin-bottom: 1rem;
-    display: block;
-    text-align-last: center;
-    padding: 0.35rem 0;
+    right: 1rem;
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .follow-me a:hover {
-    background-color: rgba(0, 0, 0, 0.26);
+    color: var(--text-clr-dark);
   }
 
   /* 2 rectangles over Hero-section*/
@@ -459,7 +481,7 @@ nav.active {
 
   nav {
     position: static;
-    width: 65%;
+    width: 60%;
     height: auto;
     background-color: transparent;
     order: 2;
@@ -468,9 +490,10 @@ nav.active {
   nav .nav-links {
     flex-direction: row;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    /* gap: 1rem; */
     height: 100%;
-    font-size: 0.9rem;
     background-color: transparent;
     transform: translateX(0);
   }
@@ -550,20 +573,20 @@ nav.active {
 .cta {
   background-color: var(--accent);
   padding: 0.45rem 0;
-  box-shadow: 0 0 5px var(--cta-shadow), 0 6px 3rem var(--cta-shadow),
-    0 1rem 5.5rem var(--cta-shadow), inset 0 0 0.4rem rgb(230, 229, 229);
+  box-shadow: 0 0 5px var(--cta-shadow), 
+  0 6px 3rem var(--cta-shadow),
+  0 1rem 5.5rem var(--cta-shadow),
+  inset 0 0 0.4rem rgb(230, 229, 229);
 }
 
 .cta a {
-  letter-spacing: 0.5px;
   color: var(--text-clr-dark);
   transition: 0.3s;
 }
 
 /* selective */
 .hero-section .cta a {
-  padding: 0;
-  padding-left: .6rem;
+  padding: 0 .45rem;
 }
 
 /* hover state*/
@@ -588,13 +611,12 @@ nav.active {
 
 /* login button */
 .login-btn {
-  border: 2px solid var(--cta-shadow);
+  box-shadow: 0 0 0 2px var(--text-clr-light);
   background-color: transparent;
-  box-shadow: -2px 2px 1rem rgba(0, 0, 0, 0.26);
 }
 
 .login-btn:hover {
-  background-color: var(--cta-shadow);
+  background: var(--text-clr-light);
   transform: translateY(-2px);
 }
 
